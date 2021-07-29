@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { unlink } from 'fs/promises';
 
 import Image from '@models/Image';
+import ws    from '@services/ws';
 
 class ImageController {
 
@@ -10,11 +11,13 @@ class ImageController {
 
         try {
 
-            await Image.create({
+            const image = await Image.create({
                 subtitle,
                 originalName: req.file?.originalname,
                 fileName: req.file?.filename
             });
+
+            ws.emit('newImage', image);
 
             return res.status(201).json({
                 message: 'Imagem adicionada com sucesso!'
@@ -22,8 +25,7 @@ class ImageController {
 
         } catch (error) {
 
-            console.log(error)
-            await unlink(req.file?.path ?? '')
+            await unlink(req.file?.path ?? '');
 
             return res.status(400).json({
                 message: 'Algo deu errado tente novamente, mais tarde.'
