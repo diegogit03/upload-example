@@ -1,14 +1,14 @@
 import { model, Schema } from 'mongoose';
 
-interface Image {
-   filename: string,
-   key: string,
+export interface Image {
+   originalName: string,
+   fileName: string,
    subtitle: string
 }
 
 const imageSchema = new Schema<Image>({
-    filename: { type: String, required: true },
-    key: { type: String, required: true },
+    originalName: { type: String, required: true },
+    fileName: { type: String, required: true },
     subtitle: { type: String, required: true }
 });
 

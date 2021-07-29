@@ -1,16 +1,21 @@
 import multer from 'multer';
-import { extname } from 'path/posix';
+import path from 'path';
 import { v4 } from 'uuid';
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, './../uploads');
+        cb(null, path.resolve(__dirname, '..', '..', 'uploads'));
     },
     filename(req, file, cb) {
-        cb(null, v4() + extname(file.originalname));
+        cb(null, `${v4()}-${file.originalname}`);
     }
 });
 
-const upload = multer({ storage });
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 6e+6
+    }
+});
 
 export default upload;

@@ -11,7 +11,8 @@
     "baseUrl": "src",
     "paths": {
         "@services/*": ["services/*"],
-        "@types/*": ["types/*"]
+        "@models/*": ["models/*"],
+        "@controllers/*": ["controllers/*"]
     }
   },
   "include": [
