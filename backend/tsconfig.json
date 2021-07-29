@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,        /* Disallow inconsistently-cased references to the same file. */
     "baseUrl": "src",
     "paths": {
-        "@services/*": ["services/*"]
+        "@services/*": ["services/*"],
+        "@types/*": ["types/*"]
     }
   },
   "include": [
