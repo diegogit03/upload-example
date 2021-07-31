@@ -12,7 +12,9 @@
     "paths": {
         "@services/*": ["services/*"],
         "@models/*": ["models/*"],
-        "@controllers/*": ["controllers/*"]
+        "@controllers/*": ["controllers/*"],
+        "@validations/*": ["validations/*"],
+        "@start/*": ["start/*"]
     }
   },
   "include": [
