@@ -1,3 +1,4 @@
+import path from 'path';
 import { Request, Response } from 'express';
 import { unlink } from 'fs/promises';
 import { validationResult } from 'express-validator';
@@ -56,7 +57,21 @@ class ImageController {
     }
 
     public async show (req: Request, res: Response) {
+       const { id } = req.params;
 
+       try {
+
+        const image = await Image.findById(id);
+
+        const filePath = path.resolve(__dirname, '..', '..', 'uploads', image?.fileName ?? '');
+
+        return res.status(200).sendFile(filePath);
+
+       } catch (error) {
+
+        return res.status(400).send();
+
+       }
     }
 
 }

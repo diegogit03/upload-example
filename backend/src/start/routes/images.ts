@@ -8,7 +8,7 @@ const router = Router();
 const controller = new ImageController();
 
 router.get('/', controller.index);
+router.get('/:id', controller.show);
 router.post('/', upload.single('image'), imageValidation, controller.store);
-router.post('/:id', controller.show);
 
 export default router;
