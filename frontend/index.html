@@ -6,11 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload-app</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <h1>Teste</h1>
+    <header>
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center p-3">
+                <img src="./assets/images/logo.svg" alt="Logo">
+                <nav>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#CreateModal">
+                        +
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="container" id="images">
+        <div id="loading" class="d-flex justify-content-center align-items-center">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+    </main>
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true">
+        <form action="http://localhost:3333/images" method="POST" enctype="multipart/form-data">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Imagem</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="image"></label>
+                        <input type="file" name="image" id="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="subtitle"></label>
+                        <input type="text" class="form-control" name="subtitle" id="subtitle">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-info">Adicionar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/popper.js/dist/popper.min.js"></script>
+    <script type="module" src="./node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./dist/bundle.js"></script>
 </body>
 </html>
